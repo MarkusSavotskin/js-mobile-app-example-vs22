@@ -13,5 +13,15 @@ export const styles = StyleSheet.create({
     innerTitle: {
         color: '#FCA34D',
         textDecorationLine: 'underline'
+    },
+    container: {
+        padding: 36,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
+    },
+    titleContainer : {
+        marginVertical: 54
     }
 })
