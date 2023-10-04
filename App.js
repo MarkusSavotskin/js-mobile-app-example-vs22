@@ -4,6 +4,7 @@ import Config from "react-native-config";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import Splash from "./src/screens/auth/Splash";
 import SignUp from "./src/screens/auth/Signup";
+import SignIn from "./src/screens/auth/SignIn";
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
   }, [])
   return (
     <SafeAreaView>
-      <SignUp/>
+      <SignIn/>
     </SafeAreaView>
   )
 }
