@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 16,
+        paddingVertical: 16,
+        paddingHorizontal: 48,
         marginBottom: 50
     },
     image: {

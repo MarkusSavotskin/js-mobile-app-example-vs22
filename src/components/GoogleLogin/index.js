@@ -21,7 +21,8 @@ const GoogleLogin = () => {
         // some other error happened
       }
     }
-  };
+  }
+  
   return (
     <TouchableOpacity activeOpacity={0.6} onPress={signIn} style={styles.container}>
       <Image
