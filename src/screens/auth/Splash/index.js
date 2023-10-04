@@ -5,7 +5,17 @@ import FooterText from '../../../components/FooterText/index.js';
 
 import {styles} from './styles';
 
-const Splash = () => {
+const Splash = ({navigation}) => {
+  console.log('navigation', navigation)
+
+  const onSignUp = () => {
+    navigation.navigate('Signup')
+  }
+
+  const onSignIn = () => {
+    navigation.navigate('Signin')
+  }
+
   return (
     <View style={styles.container}>
       <Image
@@ -19,8 +29,9 @@ const Splash = () => {
         <Text style={styles.title}>Here!</Text>
       </View>
 
-      <Button title="Sign Up" />
-      <FooterText title="Sign in" />
+      <Button onPress={onSignUp} title="Sign Up" />
+
+      <FooterText onPress={onSignIn} title="Sign in" />
     </View>
   );
 };
