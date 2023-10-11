@@ -18,6 +18,7 @@ import SignIn from './src/screens/auth/SignIn';
 
 import Config from 'react-native-config';
 import {colors} from './src/utils/colors';
+import ProductDetails from './src/screens/app/ProductDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -86,6 +87,7 @@ const App = () => {
                 component={Tabs}
                 options={{headerShown: false}}
               />
+              <Stack.Screen name='ProductDetails' component={ProductDetails} options={{headerShown: false}}/>
             </>
           ) : (
             <>

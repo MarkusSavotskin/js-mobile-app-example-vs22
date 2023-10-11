@@ -4,18 +4,25 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {styles} from './styles';
 import Header from '../../../components/Header';
-import { products } from '../../../data/products';
+import {products} from '../../../data/products';
 import FavoriteItem from '../../../components/FavoriteItem';
 
-const Favorites = () => {
+const Favorites = ({navigation}) => {
   const renderItem = ({item}) => {
-    return <FavoriteItem {...item} />;
+    const onProductPress = () => {
+      navigation.navigate('ProductDetails', {product: item});
+    };
+    return <FavoriteItem onPress={onProductPress} {...item} />;
   };
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Header title='Favorites'/>
-        <FlatList data={products} renderItem={renderItem} keyExtractor={(item) => String(item.id)}/>
+        <Header title="Favorites" />
+        <FlatList
+          data={products}
+          renderItem={renderItem}
+          keyExtractor={item => String(item.id)}
+        />
       </View>
     </SafeAreaView>
   );

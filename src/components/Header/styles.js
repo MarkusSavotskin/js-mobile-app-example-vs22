@@ -6,18 +6,18 @@ export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   title: {
     color: colors.black,
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   icon: {
     width: 24,
-    height: 24
+    height: 24,
   },
   space: {
-    width:24
-  }
+    width: 24,
+  },
 });
