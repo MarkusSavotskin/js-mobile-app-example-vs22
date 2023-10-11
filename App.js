@@ -14,7 +14,7 @@ import Profile from './src/screens/app/Profile';
 
 import Splash from './src/screens/auth/Splash';
 import SignUp from './src/screens/auth/Signup';
-import SignIn from './src/screens/auth/Signin';
+import SignIn from './src/screens/auth/SignIn';
 
 import Config from 'react-native-config';
 import {colors} from './src/utils/colors';
