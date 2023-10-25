@@ -11,6 +11,7 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import Home from './src/screens/app/Home';
 import Favorites from './src/screens/app/Favorites';
 import Profile from './src/screens/app/Profile';
+import Settings from './src/screens/app/Settings';
 
 import Splash from './src/screens/auth/Splash';
 import SignUp from './src/screens/auth/Signup';
@@ -23,6 +24,15 @@ import ProductDetails from './src/screens/app/ProductDetails';
 const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
+
+const ProfileStack = () => {
+  return (
+    <Stack.Navigator>
+        <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
+        <Stack.Screen name="Settings" component={Settings} options={{headerShown: false}}/>
+    </Stack.Navigator>
+  )
+}
 
 const Tabs = () => {
   return (
@@ -53,7 +63,7 @@ const Tabs = () => {
       })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Favorites" component={Favorites} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator>
   );
 };
