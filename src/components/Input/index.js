@@ -1,5 +1,13 @@
 import React, {useState} from 'react';
-import {TextInput, View, Text, Pressable, Image} from 'react-native';
+import {
+  TextInput,
+  View,
+  Text,
+  Pressable,
+  Image,
+  Modal,
+  TouchableOpacity,
+} from 'react-native';
 import {styles} from './styles';
 
 const Input = ({
@@ -10,19 +18,34 @@ const Input = ({
   onChangeText,
   style,
   type,
+  options,
   ...props
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isPickerModalVisible, setPickerModalVisible] = useState(false);
 
   const onEyePress = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
+
+  const onSelect = opt => {
+    onChangeText(opt);
+    setPickerModalVisible(false);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       {type === 'picker' ? (
-        <Pressable style={styles.inputContainer}>
-          <Text style={[styles.placeholder, style]}>{placeholder}</Text>
+        <Pressable
+          onPress={() => setPickerModalVisible(true)}
+          style={styles.inputContainer}>
+          {value ? (
+            <Text style={[styles.placeholder, style]}>{value?.title}</Text>
+          ) : (
+            <Text style={[styles.placeholder, style]}>{placeholder}</Text>
+          )}
+
           <Image
             style={styles.arrow}
             source={require('../../assets/arrow.png')}
@@ -52,6 +75,34 @@ const Input = ({
           ) : null}
         </View>
       )}
+      <Modal transparent visible={isPickerModalVisible}>
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => setPickerModalVisible(false)}
+          style={styles.modalWrapper}>
+          <TouchableOpacity activeOpacity={1} style={styles.modalContent}>
+            <Text style={styles.optionTitle}>Select option</Text>
+            {options?.map(opt => {
+              if (!opt?.id) {
+                return null;
+              }
+
+              const selected = value?.id === opt?.id;
+              return (
+                <Text
+                  onPress={() => onSelect(opt)}
+                  style={[
+                    styles.optionText,
+                    selected ? styles.selectedOption : {},
+                  ]}
+                  key={opt?.title}>
+                  {opt?.title}
+                </Text>
+              );
+            })}
+          </TouchableOpacity>
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 };

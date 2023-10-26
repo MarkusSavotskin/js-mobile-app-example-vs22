@@ -7,6 +7,7 @@ import {
   Pressable,
   ActivityIndicator,
   KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
@@ -14,12 +15,13 @@ import Header from '../../../components/Header';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 
+import {categories} from '../../../data/categories';
 import {styles} from './styles';
 
 const CreateListing = ({navigation}) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [values, setValues] = useState({})
+  const [values, setValues] = useState({});
 
   const goBack = () => {
     navigation.goBack();
@@ -44,17 +46,18 @@ const CreateListing = ({navigation}) => {
   };
 
   const onChange = (value, key) => {
-    setValues((val) => ({...val, [key]: value}))
-  }
+    setValues(val => ({...val, [key]: value}));
+  };
 
   return (
-    <KeyboardAvoidingView behavior='position'>
+    <KeyboardAvoidingView behavior="position">
       <Header
+        style={styles.header}
         showBack={true}
         onBackPress={goBack}
         title="Create a new listing"
       />
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text style={styles.sectionTitle}>Upload photos</Text>
         <View style={styles.imageRow}>
           <TouchableOpacity
@@ -77,12 +80,37 @@ const CreateListing = ({navigation}) => {
           ))}
           {loading ? <ActivityIndicator /> : null}
         </View>
-        <Input label="Title" placeholder="Listing Title" value={values.title} onChangeText={(v) => onChange(v, "title")}/>
-        <Input type="picker" label="Category" placeholder="Select a category" />
-        <Input label="Price" placeholder="Enter price in USD" value={values.price} onChangeText={(v) => onChange(v, "price")} keyboardType="numeric"/>
-        <Input style={styles.textarea} label="Description" placeholder="Tell us more..." value={values.description} onChangeText={(v) => onChange(v, "description")} multiline/>
+        <Input
+          label="Title"
+          placeholder="Listing Title"
+          value={values.title}
+          onChangeText={v => onChange(v, 'title')}
+        />
+        <Input
+          options={categories}
+          type="picker"
+          label="Category"
+          placeholder="Select a category"
+          value={values.category}
+          onChangeText={v => onChange(v, 'category')}
+        />
+        <Input
+          label="Price"
+          placeholder="Enter price in USD"
+          value={values.price}
+          onChangeText={v => onChange(v, 'price')}
+          keyboardType="numeric"
+        />
+        <Input
+          style={styles.textarea}
+          label="Description"
+          placeholder="Tell us more..."
+          value={values.description}
+          onChangeText={v => onChange(v, 'description')}
+          multiline
+        />
         <Button title="Submit" />
-      </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };

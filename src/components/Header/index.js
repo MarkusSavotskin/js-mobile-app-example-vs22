@@ -12,6 +12,7 @@ const Header = ({
   showSearch,
   showLogout,
   onSearchKeyword,
+  style,
   keyword,
 }) => {
   const [showSearchInput, setShowSearchInput] = useState(false);
@@ -21,7 +22,7 @@ const Header = ({
   };
   return (
     <View>
-      <View style={styles.container}>
+      <View style={[styles.container, style]}>
         {showBack ? (
           <Pressable hitSlop={20} onPress={onBackPress}>
             <Image
