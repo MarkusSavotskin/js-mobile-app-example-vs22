@@ -9,10 +9,7 @@ export const styles = StyleSheet.create({
     width: width,
     height: height * 0.45
   },
-  list: {
-
-  },
-  paggiation : {
+  paggination: {
     flexDirection: 'row',
     alignItems: 'center',
     position: 'absolute',

@@ -21,7 +21,6 @@ const ImageCarusel = ({images}) => {
       <FlatList
         horizontal
         pagingEnabled
-        style={styles.list}
         data={images}
         renderItem={renderImage}
         onMomentumScrollEnd={handleScrollEnd}
@@ -32,7 +31,7 @@ const ImageCarusel = ({images}) => {
             key={i}
             style={[
               styles.pagginationLine,
-              (i = activeIndex ? styles.activeLine : {}),
+              i === activeIndex ? styles.activeLine : {},
             ]}
           />
         ))}

@@ -35,7 +35,6 @@ export const styles = StyleSheet.create({
     padding: 24,
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 5,
   },
   save: {
     flex: 1,

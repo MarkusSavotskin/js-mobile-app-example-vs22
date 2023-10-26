@@ -25,5 +25,9 @@ export const styles = StyleSheet.create({
     icon: {
         width: 24,
         height: 24
+    },
+    button: {
+        paddingVertical: 12,
+        marginTop: 16
     }
 })

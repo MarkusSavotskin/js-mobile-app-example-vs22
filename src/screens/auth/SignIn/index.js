@@ -14,6 +14,10 @@ import {styles} from './styles';
 const SignIn = ({navigation}) => {
   const [checked, setChecked] = useState(false);
 
+  const onSignUp = () => {
+    navigation.navigate('Signup')
+  }
+
   const onBack = () => {
     navigation.goBack();
   };
@@ -29,7 +33,7 @@ const SignIn = ({navigation}) => {
         <GoogleLogin />
         <Text style={styles.footerText}>
           Don't have an account?
-          <Text style={styles.footerLink}> Sign Up</Text>
+          <Text onPress={onSignUp} style={styles.footerLink}> Sign Up</Text>
         </Text>
       </View>
     </SafeAreaView>

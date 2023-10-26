@@ -41,7 +41,7 @@ const ProductDetails = ({navigation, route}) => {
         <Pressable style={styles.bookmarkContainer}>
             <Image style={styles.bookmarkIcon} source={require('../../../assets/tabs/bookmark.png')}/>
         </Pressable>
-        <Button onPress={onContact} title='Contact Seller'/>
+        <Button style={{width: '70%'}} onPress={onContact} title='Contact Seller'/>
       </View>
     </SafeAreaView>
   );

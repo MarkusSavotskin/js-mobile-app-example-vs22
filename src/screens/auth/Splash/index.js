@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, Image} from 'react-native';
-import Button from '../../../components/Button/index.js';
+import Button from '../../../components/Button';
 import FooterText from '../../../components/FooterText/index.js';
 
 import {styles} from './styles';
@@ -29,7 +29,7 @@ const Splash = ({navigation}) => {
         <Text style={styles.title}>Here!</Text>
       </View>
 
-      <Button onPress={onSignUp} title="Sign Up" />
+      <Button style={{flex: 0, width: '100%'}} onPress={onSignUp} title="Sign Up" />
 
       <FooterText onPress={onSignIn} title="Sign in" />
     </View>

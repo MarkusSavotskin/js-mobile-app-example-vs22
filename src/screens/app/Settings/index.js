@@ -9,10 +9,20 @@ import EditableBox from '../../../components/EditableBox';
 import Button from '../../../components/Button';
 
 const Settings = () => {
+
+  const [values, setValues] = useState({name: 'user', email: 'user@mail.com'})
   const [editing, setEditing] = useState(false);
+
+  const onChange = (key, value) => {
+    setValues(v => ({...v, [key]: value}))
+  }
 
   const onEditPress = () => {
     setEditing(true);
+  };
+
+  const onSave = () => {
+    setEditing(false);
   };
 
   const onItemPress = () => {
@@ -33,9 +43,9 @@ const Settings = () => {
           </Pressable>
         </View>
 
-        <EditableBox label="Name" value="User name" editable="false" />
-        <EditableBox label="Email" value="User email" editable="true" />
-        {editing ? <Button title="Save" style={{flex: 0}} /> : null}
+        <EditableBox onChangeText={(v) => onChange('name', v)} value={values.name} label="Name" editable={editing} />
+        <EditableBox onChangeText={(v) => onChange('email', v)} value={values.email}  label="Email" editable={editing} />
+        {editing ? <Button onPress={onSave} title="Save" style={{flex: 0, paddingVertical: 12, marginTop: 16, marginBottom: 32}} /> : null}
 
         <Text style={styles.sectionTitle}>Help Center</Text>
         <ListItem onPress={onItemPress} style={styles.item} title="FAQ" />
