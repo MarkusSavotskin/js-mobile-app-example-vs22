@@ -1,20 +1,22 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Text, View, Image} from 'react-native';
 import Button from '../../../components/Button';
 import FooterText from '../../../components/FooterText/index.js';
+import {UserContext} from '../../../../App';
 
 import {styles} from './styles';
 
 const Splash = ({navigation}) => {
-  console.log('navigation', navigation)
+  const user = useContext(UserContext);
+  console.log('user => ', user)
 
   const onSignUp = () => {
-    navigation.navigate('Signup')
-  }
+    navigation.navigate('Signup');
+  };
 
   const onSignIn = () => {
-    navigation.navigate('Signin')
-  }
+    navigation.navigate('Signin');
+  };
 
   return (
     <View style={styles.container}>
@@ -29,7 +31,11 @@ const Splash = ({navigation}) => {
         <Text style={styles.title}>Here!</Text>
       </View>
 
-      <Button style={{flex: 0, width: '100%'}} onPress={onSignUp} title="Sign Up" />
+      <Button
+        style={{flex: 0, width: '100%'}}
+        onPress={onSignUp}
+        title="Sign Up"
+      />
 
       <FooterText onPress={onSignIn} title="Sign in" />
     </View>

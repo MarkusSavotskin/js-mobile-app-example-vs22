@@ -7,7 +7,7 @@ const Header = ({
   title,
   onBackPress,
   OnSearch,
-  OnLogout,
+  onLogout,
   showBack,
   showSearch,
   showLogout,
@@ -42,7 +42,7 @@ const Header = ({
         )}
         <Text style={styles.title}>{title}</Text>
         {showLogout ? (
-          <Pressable hitSlop={20} onPress={OnLogout}>
+          <Pressable hitSlop={20} onPress={onLogout}>
             <Image
               style={styles.icon}
               source={require('../../assets/logout.png')}
